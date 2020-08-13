@@ -9,48 +9,33 @@
 import SwiftUI
 
 struct ContentView: View {
-    var height : CGFloat = 1080
-    var width : CGFloat = 375
-    
-    var body: some View {
-        
-        NavigationView {
-            VStack(alignment: .center, spacing: 80) {
-            
-        VStack(alignment: .center, spacing: 20) {
-            Text("Title")
-                        .font(.title)
-                        .foregroundColor(.white)
-                    .bold()
-                    HStack{
-                        Text("Big Title")
-                            .foregroundColor(.white)
-                            .fontWeight(.heavy)
-                            .font(.system(size: 50))
-                        
-                    }
-                    Text("Subtitle")
-                        .foregroundColor(.white)
-                        .font(.body)
-                    
-        }
-        .padding(.all)
-        .frame(width: width, height: height)
-                    .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)),Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing))
-        
-        
-        
-        }.navigationBarTitle("")
-            
-        .navigationBarItems(trailing:
+    @State private var selected = 0
+    @ObservedObject var weather = CurrentWeatherViewModel()
+    private var height : CGFloat = UIScreen.main.bounds.height
+        var body: some View {
+            VStack{
+           
                 
-    NavigationLink(destination: Settings()) {
-        Image(systemName: "gear").imageScale(.large).accentColor(.black)
-    })
+                
+                    GeometryReader{ gr in
+                        CurrentWeather(weather: self.weather.current, height: self.selected == 0 ? gr.size.height : (gr.size.height*0.75)).frame(width: 375.0, height: 770).modifier(currentViewModifier()).animation(.easeInOut(duration: 0.5))
+                    }
+                    
+            }.frame(width: 375, height: 735, alignment: .center)
             
+        
+            
+        }
+        }
+
+
+    // this is an extension to make our Double as a whole nnumber without decimal value
+    extension Double {
+        var round: Int {
+            return Int(self)
+        }
     }
-    }
-}
+  
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

@@ -9,8 +9,8 @@
 import Foundation
 
 struct Weather: Codable {
-    let id, timezone, cod, dt : Int
-    let name , base : String
+    let id, timezone, cod, dt : Int?
+    let name , base : String?
     let coord : Coord
     let weather : [WeatherData]
     let main : Main
@@ -19,29 +19,29 @@ struct Weather: Codable {
 }
 
 struct Coord : Codable {
-    let lon, lat : Double
+    let lon, lat : Double?
 }
 
 struct WeatherData : Codable, Identifiable {
-    let id : Int
-    let main, description, icon : String
+    let id : Int?
+    let main, description, icon : String?
 }
 
 struct Main: Codable {
-    let temp, temp_min, temp_max, feels_like : Double
-    let pressure, humidity : Int
+    var temp, temp_min, temp_max, feels_like : Double?
+    let pressure, humidity : Int?
 }
 
 struct Wind : Codable {
-    let speed : Double
-    let deg : Int
+    let speed : Double?
+    let deg : Int?
 }
 
 struct Clouds : Codable{
-    let all : Int
+    let all : Int?
 }
 
 struct Sys: Codable {
-    let type, id, sunrise, sunset : Int
-    let country : String
+    let type, id, sunrise, sunset : Int?
+    let country : String?
 }

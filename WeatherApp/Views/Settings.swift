@@ -10,21 +10,21 @@ import SwiftUI
 
 struct Settings: View {
     
+    @State var city : String = ""
+    @State var selected : Int = 0
     var body: some View {
         
         NavigationView {
             VStack(alignment: .center, spacing: 5){
                 
-                
-                
-                TextField("Enter City"/*@END_MENU_TOKEN@*/, text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")).padding()
                 VStack(alignment:.center, spacing: 5){
                     
                     
-                    Picker(selection: .constant(1), label: Text("Temperature Unit")) /*@START_MENU_TOKEN@*/{
+                    Picker(selection: $selected, label: Text("Temperature Unit")) {
                         Text("Celsius").tag(1)
                         Text("Fahrenheit").tag(2).padding()
-                    }/*@END_MENU_TOKEN@*/
+                            .pickerStyle(SegmentedPickerStyle())
+                    }
                     
                     
                 }
