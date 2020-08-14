@@ -9,8 +9,9 @@
 import Foundation
 import Combine
 
-final class CurrentWeatherViewModel : ObservableObject{
+final class CurrentWeatherViewModel : ObservableObject {
     @Published var current : Weather?
+    @Published var color: String = "defaultStatus"
     
     init() {
         DispatchQueue.main.async {
@@ -27,12 +28,15 @@ final class CurrentWeatherViewModel : ObservableObject{
 // fetch functions for metric and imperial and set color at the home screen
 
 extension CurrentWeatherViewModel {
-    func fetchmetric(_ city : String = "london"){
+    func fetchmetric(_ city : String = "london") {
         let icon = current?.weather.last?.icon
-        API.fetchCurrentmetricWeather(by: city) {
+        API.fetchCurrentmetricWeather(by: city) { weather in
             // Work In Progress
-            CurrentWeather().color = self.backgroundColor(code: icon ?? "01d")
-            self.current = $0
+            DispatchQueue.main.async {
+                self.current = weather
+                self.color = self.backgroundColor(code: icon ?? "aaa")
+            }
+           
         }
     }
     

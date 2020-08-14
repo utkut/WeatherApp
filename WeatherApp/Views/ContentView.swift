@@ -23,13 +23,10 @@ struct ContentView: View {
                 }
                     GeometryReader{ gr in
                         CurrentWeather(weather: self.weather.current, height: self.selected == 0 ? gr.size.height : (gr.size.height*0.75)).frame(width: 375.0, height: 770).modifier(currentViewModifier()).animation(.easeInOut(duration: 0.5))
-                    }
+                    }.edgesIgnoringSafeArea(.all)
                     
             }.frame(width: 375, height: 735, alignment: .center)
             
-            .onAppear() { // Autofetch
-                self.weather.fetchmetric()
-            }
         
             
         }

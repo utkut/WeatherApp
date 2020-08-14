@@ -33,14 +33,12 @@ struct CurrentWeather: View {
         "Heavy rain":LinearGradient(gradient: Gradient(colors: [Color( #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)), Color( #colorLiteral(red: 0.1596036421, green: 0, blue: 0.5802268401, alpha: 1))]), startPoint: .top, endPoint: .bottom),
         "Light freezing rain":LinearGradient(gradient: Gradient(colors: [Color( #colorLiteral(red: 0.7433765433, green: 0.9529411793, blue: 0.8886958889, alpha: 1)), Color( #colorLiteral(red: 0.4561494407, green: 0.6342332627, blue: 0.7568627596, alpha: 1))]), startPoint: .top, endPoint: .bottom),
         "Heavy rain at times":LinearGradient(gradient: Gradient(colors: [Color( #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)), Color( #colorLiteral(red: 0.1596036421, green: 0, blue: 0.5802268401, alpha: 1))]), startPoint: .top, endPoint: .bottom),
-        "defaultStatus":LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)),Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1))]), startPoint: .top, endPoint: .bottom)
+        "defaultStatus":LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)),Color(#colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1))]), startPoint: .top, endPoint: .bottom)
     ]
     
     var weather : Weather?
     var height : CGFloat = 0
-    
-   @State var color : String = "defaultStatus"
-    
+    var model: CurrentWeatherViewModel?
     var body: some View {
         NavigationView{
         VStack(alignment: .center, spacing: 10) {
@@ -65,7 +63,7 @@ struct CurrentWeather: View {
                 .font(.body)
             
         }.frame(width: height, height: height)
-            .background(bgColors[color])
+        .background(bgColors[self.model?.color ?? "defaultStatus"])
             
         .navigationBarItems(trailing:
                                 NavigationLink(destination: Settings()) {
@@ -83,8 +81,8 @@ struct currentViewModifier : ViewModifier{
     func body(content: Content) -> some View {
         content
             .cornerRadius(radius)
-            .shadow(color: .gray, radius: radius, x: xAxis, y: yAxis)
-            .opacity(0.8)
+            
+            .opacity(1.0)
         
     }
 }
