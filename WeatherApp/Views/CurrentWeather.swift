@@ -10,6 +10,7 @@ import SwiftUI
 
 
 struct CurrentWeather: View {
+    
     var weather : Weather?
     var height : CGFloat = 0
     
@@ -66,3 +67,4 @@ struct CurrentWeather_Previews: PreviewProvider {
        CurrentWeather()
     }
 }
+

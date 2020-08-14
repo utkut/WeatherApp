@@ -21,6 +21,19 @@
 		65BF755124E5192F003012D4 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BF755024E5192F003012D4 /* CurrentWeather.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		65B561BB24E547DD00B3D3D1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6502EE7D24A5C6AB004F78A9 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6502EE8024A5C6AB004F78A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +44,8 @@
 		6502EE8F24A5C6AF004F78A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6502EE9124A5C6AF004F78A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		651F587724E3F049004B83E7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		65B561AB24E547DA00B3D3D1 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		65B561AD24E547DA00B3D3D1 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		65BF754724E4F1E8003012D4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = API.swift; path = ../../../../../../Users/utkut/Documents/API.swift; sourceTree = "<group>"; };
 		65BF754A24E4F34E003012D4 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		65BF754C24E4FEE3003012D4 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
@@ -53,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				6502EE7F24A5C6AB004F78A9 /* WeatherApp */,
+				65B561AA24E547DA00B3D3D1 /* Frameworks */,
 				6502EE7E24A5C6AB004F78A9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,6 +114,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		65B561AA24E547DA00B3D3D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65B561AB24E547DA00B3D3D1 /* WidgetKit.framework */,
+				65B561AD24E547DA00B3D3D1 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		65BF754624E4F1CF003012D4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +152,7 @@
 				6502EE7924A5C6AB004F78A9 /* Sources */,
 				6502EE7A24A5C6AB004F78A9 /* Frameworks */,
 				6502EE7B24A5C6AB004F78A9 /* Resources */,
+				65B561BB24E547DD00B3D3D1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -143,7 +169,7 @@
 		6502EE7524A5C6AA004F78A9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Utku Tarhan";
 				TargetAttributes = {
@@ -333,6 +359,7 @@
 		6502EE9524A5C6B0004F78A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WeatherApp/Preview Content\"";
@@ -354,6 +381,7 @@
 		6502EE9624A5C6B0004F78A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WeatherApp/Preview Content\"";
