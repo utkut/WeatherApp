@@ -27,6 +27,9 @@ struct ContentView: View {
                     
             }.frame(width: 375, height: 735, alignment: .center)
             
+            .onAppear() { // Autofetch
+                self.weather.fetchmetric()
+            }
         
             
         }
@@ -46,3 +49,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
