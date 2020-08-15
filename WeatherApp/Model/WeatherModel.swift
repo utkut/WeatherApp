@@ -15,12 +15,12 @@ final class CurrentWeatherViewModel : ObservableObject {
     
     init() {
         DispatchQueue.main.async {
-            //if Settings().selected == 0{
+            if Settings().selected == 0{
                 self.fetchmetric()
-            //}
-           // else{
+            }
+           else{
                 self.fetchimperial()
-           // }
+           }
         }
     }
 }
@@ -36,14 +36,16 @@ extension CurrentWeatherViewModel {
                 self.current = weather
                 self.color = self.backgroundColor(code: icon ?? "aaa")
             }
-           
         }
     }
     
     func fetchimperial(_ city : String = "london"){
-        API.fetchCurrentimperialWeather(by: city) {
-            self.current = $0
-            
+        let icon = current?.weather.last?.icon
+        API.fetchCurrentimperialWeather(by: city) { weather in
+            DispatchQueue.main.async {
+                self.current = weather
+                self.color = self.backgroundColor(code: icon ?? "aaa")
+            }
         }
     }
     func backgroundColor(code : String) -> String {

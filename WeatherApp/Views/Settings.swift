@@ -15,20 +15,18 @@ struct Settings: View {
     var body: some View {
         
         NavigationView {
-            VStack(alignment: .center, spacing: 5){
+            VStack(alignment: .center, spacing: 35){
                 
                 VStack(alignment:.center, spacing: 5){
                     
                     
-                    Picker(selection: $selected, label: Text("Temperature Unit")) {
+                    Picker(selection: self.$selected, label: Text("Temperature Unit")) {
                         Text("Celsius").tag(1)
                         Text("Fahrenheit").tag(2).padding()
                             .pickerStyle(SegmentedPickerStyle())
                     }
                     
-                    
                 }
-                
             }
         }
         .navigationBarTitle("Settings")
