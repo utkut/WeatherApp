@@ -57,7 +57,7 @@ struct CurrentWeather: View {
             .bold()
             .padding()
             HStack{
-                Text("\(weather?.main.temp ?? 0)°")
+                Text("\(weather?.main.temp?.rounded() ?? 0, specifier: "%.0f")°")
                     .foregroundColor(.white)
                     .fontWeight(.heavy)
                     .font(.system(size: 50))
@@ -98,3 +98,9 @@ struct CurrentWeather_Previews: PreviewProvider {
     }
 }
 
+// this is an extension to make our Double as a whole nnumber without decimal value
+extension Double {
+    var round: Int {
+        return Int(self)
+    }
+}

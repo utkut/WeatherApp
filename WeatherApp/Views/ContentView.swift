@@ -33,12 +33,7 @@ struct ContentView: View {
     }
 
 
-    // this is an extension to make our Double as a whole nnumber without decimal value
-    extension Double {
-        var round: Int {
-            return Int(self)
-        }
-    }
+
   
 
 struct ContentView_Previews: PreviewProvider {
