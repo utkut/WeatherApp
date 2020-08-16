@@ -73,10 +73,6 @@ struct CurrentWeather: View {
         }.frame(width: height, height: height)
         .background(bgColors[weather?.weather.last?.icon ?? "defaultStatus"])
             
-        .navigationBarItems(trailing:
-                                NavigationLink(destination: Settings()) {
-                                    Image(systemName: "gear").imageScale(.large).accentColor(.black)
-                            })
         }.onAppear {} // Code Execution at startup
     }
 }
