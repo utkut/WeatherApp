@@ -17,11 +17,20 @@ final class CurrentWeatherViewModel : ObservableObject {
     
     init() {
         DispatchQueue.main.async {
-            if Settings().selected == 0{
+            if Settings().selected == 0 && LocationManager().statusString == "denied"{
                 self.fetchmetric()
             }
-           else{
+            
+            if Settings().selected == 0 && LocationManager().statusString == "authorizedWhenInUse" {
+                self.fetchLocationMetric()
+            }
+            
+            if Settings().selected == 1 {
                 self.fetchimperial()
+            
+            if Settings().selected == 1 && LocationManager().statusString == "authorizedWhenInUse" {
+                self.fetchLocationMetric()
+            }
            }
         }
     }
@@ -30,7 +39,7 @@ final class CurrentWeatherViewModel : ObservableObject {
 // fetch functions for metric and imperial and set color at the home screen
 
 extension CurrentWeatherViewModel {
-    func fetchmetric(_ city : String = "london") {
+    func fetchmetric(_ city : String = "") {
         let icon = current?.weather.last?.icon
         API.fetchCurrentmetricWeather(by: city) { weather in
             // Work In Progress
@@ -41,7 +50,7 @@ extension CurrentWeatherViewModel {
         }
     }
     
-    func fetchimperial(_ city : String = "london"){
+    func fetchimperial(_ city : String = ""){
         let icon = current?.weather.last?.icon
         API.fetchCurrentimperialWeather(by: city) { weather in
             DispatchQueue.main.async {
@@ -50,6 +59,23 @@ extension CurrentWeatherViewModel {
             }
         }
     }
+    
+    func fetchLocationMetric(_ latitude: String = "", _ longitude: String = ""){
+        API.fetchCurrentMetricLocationWeather(longitude: longitude, latitude: latitude) { weather in
+            DispatchQueue.main.async {
+                self.current = weather
+            }
+        }
+    }
+    
+    func fetchLocationImperial(_ latitude: String = "", _ longitude: String = ""){
+        API.fetchCurrentImperialLocationWeather(longitude: longitude, latitude: latitude) { weather in
+            DispatchQueue.main.async {
+                self.current = weather
+            }
+        }
+    }
+    
     func backgroundColor(code : String) -> String {
         
         switch code {

@@ -19,7 +19,7 @@ class LocationManager: NSObject, ObservableObject {
             self.locationManager.delegate = self
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
             self.locationManager.requestWhenInUseAuthorization()
-            self.locationManager.startUpdatingLocation()
+            self.locationManager.requestLocation()
         }
     @Published var locationStatus: CLAuthorizationStatus? {
            willSet {
@@ -41,7 +41,7 @@ class LocationManager: NSObject, ObservableObject {
            switch status {
            case .notDetermined: return "notDetermined"
            case .authorizedWhenInUse: return "authorizedWhenInUse"
-           //case .authorizedAlways: return "authorizedAlways"
+           case .authorizedAlways: return "authorizedAlways"
            case .restricted: return "restricted"
            case .denied: return "denied"
            default: return "unknown"
@@ -64,6 +64,9 @@ class LocationManager: NSObject, ObservableObject {
            self.lastLocation = location
            print(#function, location)
        }
+        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+            print("Failed to find user's location: \(error.localizedDescription)")
+        }
 
    }
 

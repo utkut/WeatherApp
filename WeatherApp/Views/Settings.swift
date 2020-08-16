@@ -13,7 +13,7 @@ import SwiftUI
 struct Settings: View {
     
     @State var city : String = ""
-    @State var selected : Int = -1
+    @State var selected : Int = 0
     var body: some View {
         
         NavigationView {

@@ -9,10 +9,19 @@
 //  Does not infringe any conflict of interest with Apple Business Conduct 2020.
 //
 import SwiftUI
+import CoreLocation
 
 struct ContentView: View {
     @State private var selected = 0
     @ObservedObject var weather = CurrentWeatherViewModel()
+    
+    @ObservedObject var locationManager = LocationManager()
+    var userLatitude: String {
+            return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
+        }
+    var userLongitude: String {
+            return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+        }
     @State var city : String = ""
     private var height : CGFloat = UIScreen.main.bounds.height
         var body: some View {
@@ -25,14 +34,17 @@ struct ContentView: View {
                     .ignoresSafeArea()
                 .navigationBarItems(leading:
                 NavigationLink(destination: Settings()) {
-                Image(systemName: "gear").imageScale(.large).accentColor(.black)
+                Image(systemName: "gear").imageScale(.large)
                 },
                     trailing: TextField("Enter your city", text: $city){
                         self.weather.fetchmetric(self.city)
                     }
                     .padding(.leading))
             }.ignoresSafeArea()
-}
+            .onAppear{
+                self.weather.fetchLocationMetric(userLatitude, userLongitude)
+            }
+        }
 }
 
   
