@@ -29,10 +29,9 @@ struct ContentView: View {
                 },
                     trailing: TextField("Enter your city", text: $city){
                         self.weather.fetchmetric(self.city)
-                    }.padding(.trailing, 20.0)
-                                
-                                )
-            }
+                    }
+                    .padding(.leading))
+            }.ignoresSafeArea()
 }
 }
 
