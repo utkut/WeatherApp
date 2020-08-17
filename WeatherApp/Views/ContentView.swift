@@ -12,46 +12,59 @@ import SwiftUI
 import CoreLocation
 
 struct ContentView: View {
-    @State private var selected = 0
+    @State private var selected = 1
     @ObservedObject var weather = CurrentWeatherViewModel()
-    
     @ObservedObject var locationManager = LocationManager()
+    @State var city : String = ""
     var userLatitude: String {
             return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
         }
     var userLongitude: String {
             return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
         }
-    @State var city : String = ""
+    
     private var height : CGFloat = UIScreen.main.bounds.height
         var body: some View {
-            NavigationView{
         
-            GeometryReader{ gr in
-                CurrentWeather(weather: self.weather.current, height: self.selected == 0 ? gr.size.height : (gr.size.height*1)).frame(width: 375.0, height: 900).modifier(currentViewModifier()).animation(.easeInOut(duration: 0.5))
-                    
-                    }.frame(width: 375, height: 790, alignment: .center)
-                    .ignoresSafeArea()
-                .navigationBarItems(leading:
-                NavigationLink(destination: Settings()) {
-                Image(systemName: "gear").imageScale(.large)
-                },
-                    trailing: TextField("Enter your city", text: $city){
-                        self.weather.fetchmetric(self.city)
+            ScrollView(){
+            ZStack{
+                HStack(alignment: .top, spacing: 10){
+                        VStack(alignment: .center, spacing: 5){
+                            TextField("Enter your city", text: $city){
+                                self.weather.fetchmetric(self.city)
+                            } .padding()
+                            
+                            
+                            GeometryReader{ gr in
+                                CurrentWeather(weather: self.weather.current, height: self.selected == 0 ? gr.size.height : (gr.size.height)).frame(minWidth: 0, maxWidth: .infinity, minHeight: 714, maxHeight: .infinity ,alignment: .center).animation(.easeOut(duration: 0.5))
+                                    .lineLimit(nil)
+                            }.frame(minWidth: 375,
+                                    maxWidth: .infinity,
+                                    minHeight: 714,
+                                    maxHeight: .infinity,
+                                    alignment: .center
+                            )
+                            
+                        }.edgesIgnoringSafeArea(.all)
                     }
-                    .padding(.leading))
-            }.ignoresSafeArea()
+            }
+            }
+            
             .onAppear{
                 self.weather.fetchLocationMetric(userLatitude, userLongitude)
+                
             }
+            
         }
-}
+    
+    }
 
-  
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            
     }
 }
 

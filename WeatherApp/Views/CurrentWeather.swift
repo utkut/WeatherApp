@@ -49,7 +49,10 @@ struct CurrentWeather: View {
     var model: CurrentWeatherViewModel?
     var body: some View {
         NavigationView{
+        
+            
         VStack(alignment: .center, spacing: 10) {
+            
             Image(weather?.weather.last?.icon ?? "01d")
                 .resizable()
                 .frame(width: 130, height: 130)
@@ -72,8 +75,10 @@ struct CurrentWeather: View {
             
         }.frame(width: height, height: height)
         .background(bgColors[weather?.weather.last?.icon ?? "defaultStatus"])
-            
+        .navigationBarItems(leading: NavigationLink(destination: Settings()) {
+                                Image(systemName: "gear").imageScale(.large)                            })
         }.onAppear {} // Code Execution at startup
+        
     }
 }
 

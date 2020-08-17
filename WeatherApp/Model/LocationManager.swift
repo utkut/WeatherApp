@@ -19,7 +19,9 @@ class LocationManager: NSObject, ObservableObject {
             self.locationManager.delegate = self
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
             self.locationManager.requestWhenInUseAuthorization()
+            self.locationManager.startUpdatingLocation()
             self.locationManager.requestLocation()
+            self.locationManager.stopUpdatingLocation()
         }
     @Published var locationStatus: CLAuthorizationStatus? {
            willSet {
@@ -37,7 +39,6 @@ class LocationManager: NSObject, ObservableObject {
            guard let status = locationStatus else {
                return "unknown"
            }
-
            switch status {
            case .notDetermined: return "notDetermined"
            case .authorizedWhenInUse: return "authorizedWhenInUse"
