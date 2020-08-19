@@ -20,7 +20,7 @@ struct ContentView: View {
             return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
         }
     var userLongitude: String {
-            return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+        return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
         }
     
     private var height : CGFloat = UIScreen.main.bounds.height
