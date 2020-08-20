@@ -5,14 +5,17 @@
 //  Created by Utku Tarhan on 8/18/20.
 //  Copyright © 2020 Utku Tarhan. All rights reserved.
 //
-
+//  The code was written for personal/educational purposes on San Francisco State University
+//  Does not infringe any conflict of interest with Apple Business Conduct 2020.
+//
 import WidgetKit
 import SwiftUI
-import Intents
+
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+        
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
@@ -20,6 +23,7 @@ struct Provider: IntentTimelineProvider {
         
         let entry = SimpleEntry(date: Date(), configuration: configuration)
         //let refresh = Calendar.current.date(byAdding: .hour, value: 10, to: Date()) ?? Date()
+        
         completion(entry)
     }
 
@@ -41,14 +45,13 @@ struct Provider: IntentTimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    
     let configuration: ConfigurationIntent
 }
 
 struct WeatherWidgetEntryView : View {
     
     var entry: Provider.Entry
-    let locationManager = LocationManager()
+    @StateObject var locationManager = LocationManager()
     
     var userLatitude: String {
         return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
@@ -99,15 +102,13 @@ struct WeatherWidgetEntryView : View {
                 .font(.title3)
                 .bold()
                 .foregroundColor(.white)
-                .redacted(reason: .placeholder)
-            .padding()
-            
+                .padding()
             
             Image(weather?.weather.last?.icon ?? "01d")
                 .resizable()
                 .frame(width: 30, height: 30)
                 .aspectRatio(contentMode: .fit)
-                .redacted(reason: .placeholder)
+                
             Spacer()
         
         HStack{
@@ -115,12 +116,12 @@ struct WeatherWidgetEntryView : View {
                     .foregroundColor(.white)
                     .fontWeight(.heavy)
                     .font(.system(size: 12))
-                    .redacted(reason: .placeholder)
+                    
             }
             Text("\(weather?.weather.last?.description ?? "Unknown")")
                 .foregroundColor(.white)
                 .font(.body)
-                .redacted(reason: .placeholder)
+                
                 .padding()
         }.frame(width: 160, height: 160)
         .background(bgColors[weather?.weather.last?.icon ?? "defaultStatus"])
