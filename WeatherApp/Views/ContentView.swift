@@ -51,7 +51,6 @@ struct ContentView: View {
             }
             
             .onAppear{
-                self.weather.fetchLocationMetric(userLatitude, userLongitude)
                 
             }
             

@@ -131,7 +131,7 @@ struct WeatherWidgetEntryView : View {
         
     }
     func fetch (userLatitude: String, userLongitude: String){
-    model.fetchLocationMetric(userLatitude, userLongitude)
+//    model.fetchLocationMetric(userLatitude, userLongitude)
     }
 }
     

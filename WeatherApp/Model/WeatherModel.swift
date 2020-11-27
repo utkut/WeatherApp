@@ -22,14 +22,12 @@ final class CurrentWeatherViewModel : ObservableObject {
             }
             
             if Settings().selected == 0 && LocationManager().statusString == "authorizedWhenInUse" {
-                self.fetchLocationMetric()
             }
             
             if Settings().selected == 1 {
                 self.fetchimperial()
             
             if Settings().selected == 1 && LocationManager().statusString == "authorizedWhenInUse" {
-                self.fetchLocationMetric()
             }
            }
         }
@@ -60,21 +58,6 @@ extension CurrentWeatherViewModel {
         }
     }
     
-    func fetchLocationMetric(_ latitude: String = "", _ longitude: String = ""){
-        API.fetchCurrentMetricLocationWeather(longitude: longitude, latitude: latitude) { weather in
-            DispatchQueue.main.async {
-                self.current = weather
-            }
-        }
-    }
-    
-    func fetchLocationImperial(_ latitude: String = "", _ longitude: String = ""){
-        API.fetchCurrentImperialLocationWeather(longitude: longitude, latitude: latitude) { weather in
-            DispatchQueue.main.async {
-                self.current = weather
-            }
-        }
-    }
     
     func backgroundColor(code : String) -> String {
         
