@@ -22,6 +22,7 @@ final class CurrentWeatherViewModel : ObservableObject {
             }
             
             if Settings().selected == 0 && LocationManager().statusString == "authorizedWhenInUse" {
+                
             }
             
             if Settings().selected == 1 {

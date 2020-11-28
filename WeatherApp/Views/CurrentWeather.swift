@@ -75,7 +75,7 @@ struct CurrentWeather: View {
             
         }.frame(width: height, height: height)
         .background(bgColors[weather?.weather.last?.icon ?? "defaultStatus"])
-        .navigationBarItems(leading: NavigationLink(destination: Settings()) {
+        .navigationBarItems(trailing: NavigationLink(destination: Settings()) {
                                 Image(systemName: "gear").imageScale(.large)                            })
         }.onAppear {} // Code Execution at startup
         
@@ -102,7 +102,7 @@ struct CurrentWeather_Previews: PreviewProvider {
     }
 }
 
-// this is an extension to make our Double as a whole nnumber without decimal value
+// This is an extension to make our Double as a whole number without decimal value
 extension Double {
     var round: Int {
         return Int(self)

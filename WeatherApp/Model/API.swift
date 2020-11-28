@@ -18,13 +18,15 @@ class API {
     enum Endpoints {
         
         static let dailyBase = "http://api.openweathermap.org/data/2.5"
+        static let locationBase = "http://api.openweathermap.org/data/2.5/"
         
-        //MARK:- get your appid here https://openweathermap.org/api
+        //MARK:- Get your appid here https://openweathermap.org/api
         static let appid = "APPIDHERE"
         
         case metric(city:String)
         case imperial(city:String)
-        
+        case locationmetric(latitude:String, Longitude:String)
+        case locationimperial(latitude:String, Longitude:String)
         var stringValue : String {
             
             switch self {
@@ -32,6 +34,11 @@ class API {
                 return   Endpoints.dailyBase + "/weather?q=\(city.trimmingCharacters(in: .whitespaces))&APPID=" + Endpoints.appid + "&units=metric"
             case .imperial(city: let city):
                 return Endpoints.dailyBase + "/weather?q=\(city.trimmingCharacters(in: .whitespaces))&APPID=" + Endpoints.appid + "&units=imperial"
+            case .locationmetric(latitude: let lat, Longitude: let lon):
+                return Endpoints.dailyBase + "/weather?lat=\(lat)" + "&lon=\(lon)" + "&APPID=" + Endpoints.appid + "&units=metric"
+                
+            case .locationimperial(latitude: let lat, Longitude: let lon):
+                return Endpoints.dailyBase + "/weather?lat=\(lat)" + "&lon=\(lon)" + "&APPID=" + Endpoints.appid + "&units=imperial"
             }
         }
         
@@ -87,7 +94,31 @@ class API {
             completion(result)
         }
     }
-   
+    // Current Metric Weather
+    class func fetchCurrentLocationWeatherMetric(by latitude : String , longitude: String, completion : @escaping (Weather?)->()){
+        let url = Endpoints.locationmetric(latitude: latitude, Longitude: longitude).url
+        getWeather(url: url, responseType: Weather.self) { (result, error) in
+            if let error = error{
+                print(error.localizedDescription)
+                completion(nil)
+                return
+            }
+            completion(result)
+        }
+    }
+    
+    // Current Imperial Weather
+    class func fetchCurrentLocationWeatherImperial(by longitude : String, latitude: String , completion : @escaping (Weather?)->()){
+        let url = Endpoints.locationimperial(latitude: latitude, Longitude: longitude).url
+        getWeather(url: url, responseType: Weather.self) { (result, error) in
+            if let error = error{
+                print(error.localizedDescription)
+                completion(nil)
+                return
+            }
+            completion(result)
+        }
+    }
 }
 
 

@@ -18,7 +18,7 @@ struct ContentView: View {
     @State var city : String = ""
     var userLatitude: String {
             return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
-        }
+    }
     var userLongitude: String {
         return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
         }
@@ -28,11 +28,12 @@ struct ContentView: View {
         
             ScrollView(){
             ZStack{
+                
                 HStack(alignment: .top, spacing: 10){
-                        VStack(alignment: .center, spacing: 5){
-                            TextField("Enter your city", text: $city){
+                        VStack(alignment: .center, spacing: 0){
+                            TextField("Enter your city", text: $city, onCommit: {
                                 self.weather.fetchmetric(self.city)
-                            } .padding()
+                            }) .padding()
                             
                             
                             GeometryReader{ gr in
@@ -40,14 +41,14 @@ struct ContentView: View {
                                     .lineLimit(nil)
                             }.frame(minWidth: 375,
                                     maxWidth: .infinity,
-                                    minHeight: 714,
+                                    minHeight: 745,
                                     maxHeight: .infinity,
                                     alignment: .center
                             )
                             
                         }.edgesIgnoringSafeArea(.all)
                     }
-            }
+                }
             }
             
             .onAppear{

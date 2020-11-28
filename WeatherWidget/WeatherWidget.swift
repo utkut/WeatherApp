@@ -22,7 +22,7 @@ struct Provider: IntentTimelineProvider {
         
         
         let entry = SimpleEntry(date: Date(), configuration: configuration)
-        //let refresh = Calendar.current.date(byAdding: .hour, value: 10, to: Date()) ?? Date()
+        _ = Calendar.current.date(byAdding: .hour, value: 10, to: Date()) ?? Date()
         
         completion(entry)
     }
