@@ -26,7 +26,7 @@ struct ContentView: View {
     private var height : CGFloat = UIScreen.main.bounds.height
         var body: some View {
         
-            ScrollView(){
+
             ZStack{
                 
                 HStack(alignment: .top, spacing: 10){
@@ -46,13 +46,13 @@ struct ContentView: View {
                                     alignment: .center
                             )
                             
-                        }.edgesIgnoringSafeArea(.all)
-                    }
+                        }
                 }
+
             }
             
             .onAppear{
-                
+                self.weather.fetchmetriclocationdata(lat: userLatitude, lon: userLongitude)
             }
             
         }

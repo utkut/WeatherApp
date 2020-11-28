@@ -59,9 +59,19 @@ extension CurrentWeatherViewModel {
         }
     }
     
-    func fetchLongerCities( city: String){
+    func fetchmetriclocationdata(lat: String, lon: String){
         let icon = current?.weather.last?.icon
-        API.fetchCurrentimperialWeather(by: city) { weather in
+        API.fetchCurrentLocationWeatherMetric(latitude: lat, longitude: lon){ weather in
+            DispatchQueue.main.async {
+                self.current = weather
+                self.color = self.backgroundColor(code: icon ?? "aaa")
+            }
+        }
+    }
+    
+    func fetchimperiallocationdata(lat: String, lon: String){
+        let icon = current?.weather.last?.icon
+        API.fetchCurrentLocationWeatherImperial(longitude: lon, latitude: lat){ weather in
             DispatchQueue.main.async {
                 self.current = weather
                 self.color = self.backgroundColor(code: icon ?? "aaa")

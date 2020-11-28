@@ -95,7 +95,7 @@ class API {
         }
     }
     // Current Metric Weather
-    class func fetchCurrentLocationWeatherMetric(by latitude : String , longitude: String, completion : @escaping (Weather?)->()){
+    class func fetchCurrentLocationWeatherMetric(latitude : String , longitude: String, completion : @escaping (Weather?)->()){
         let url = Endpoints.locationmetric(latitude: latitude, Longitude: longitude).url
         getWeather(url: url, responseType: Weather.self) { (result, error) in
             if let error = error{
@@ -108,7 +108,7 @@ class API {
     }
     
     // Current Imperial Weather
-    class func fetchCurrentLocationWeatherImperial(by longitude : String, latitude: String , completion : @escaping (Weather?)->()){
+    class func fetchCurrentLocationWeatherImperial(longitude : String, latitude: String , completion : @escaping (Weather?)->()){
         let url = Endpoints.locationimperial(latitude: latitude, Longitude: longitude).url
         getWeather(url: url, responseType: Weather.self) { (result, error) in
             if let error = error{
