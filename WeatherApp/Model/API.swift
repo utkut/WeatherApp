@@ -27,16 +27,16 @@ class API {
         case imperial(city:String)
         case locationmetric(latitude:String, Longitude:String)
         case locationimperial(latitude:String, Longitude:String)
+        
         var stringValue : String {
             
             switch self {
             case .metric(city: let city):
-                return   Endpoints.dailyBase + "/weather?q=\(city.trimmingCharacters(in: .whitespaces))&APPID=" + Endpoints.appid + "&units=metric"
+                return   Endpoints.dailyBase + "/weather?q=\(city.trimmingCharacters(in: .whitespaces).replacingOccurrences(of: " ", with: "%20"))&APPID=" + Endpoints.appid + "&units=metric"
             case .imperial(city: let city):
-                return Endpoints.dailyBase + "/weather?q=\(city.trimmingCharacters(in: .whitespaces))&APPID=" + Endpoints.appid + "&units=imperial"
+                return Endpoints.dailyBase + "/weather?q=\(city.trimmingCharacters(in: .whitespaces).replacingOccurrences(of: " ", with: "%20"))&APPID=" + Endpoints.appid + "&units=imperial"
             case .locationmetric(latitude: let lat, Longitude: let lon):
                 return Endpoints.dailyBase + "/weather?lat=\(lat)" + "&lon=\(lon)" + "&APPID=" + Endpoints.appid + "&units=metric"
-                
             case .locationimperial(latitude: let lat, Longitude: let lon):
                 return Endpoints.dailyBase + "/weather?lat=\(lat)" + "&lon=\(lon)" + "&APPID=" + Endpoints.appid + "&units=imperial"
             }
