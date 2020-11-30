@@ -52,7 +52,10 @@ struct ContentView: View {
             }
             
             .onAppear{
+                print(Secrets.eula)
                 self.weather.fetchmetriclocationdata(lat: userLatitude, lon: userLongitude)
+                print(userLatitude + ", " + userLongitude)
+                
             }
             
         }
