@@ -17,7 +17,7 @@ struct CurrentWeather: View {
     let bgColors = [
         
         "01d":LinearGradient(gradient: Gradient(colors: [Color( #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)), Color( #colorLiteral(red: 0.9529411793, green: 0.8685067713, blue: 0.1800223484, alpha: 1))]), startPoint: .top, endPoint: .bottom),
-        "01n":LinearGradient(gradient: Gradient(colors: [Color( #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)), Color( #colorLiteral(red: 0.1266334653, green: 0.3149554133, blue: 0.980891645, alpha: 1))]), startPoint: .top, endPoint: .bottom),
+        "01n":LinearGradient(gradient: Gradient(colors: [Color( #colorLiteral(red: 0.1071834788, green: 0.2619349658, blue: 0.8487897515, alpha: 1)), Color( #colorLiteral(red: 0.06746657938, green: 0.1604262292, blue: 0.520134449, alpha: 1))]), startPoint: .top, endPoint: .bottom),
         "02d":LinearGradient(gradient: Gradient(colors: [Color( #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)), Color( #colorLiteral(red: 0.3611070699, green: 0.3893437324, blue: 0.5149981027, alpha: 1))]), startPoint: .top, endPoint: .bottom),
         "02n":LinearGradient(gradient: Gradient(colors: [Color( #colorLiteral(red: 0.5644291786, green: 0.6156922265, blue: 0.8125274491, alpha: 1)), Color( #colorLiteral(red: 0.3611070699, green: 0.3893437324, blue: 0.5149981027, alpha: 1))]), startPoint: .top, endPoint: .bottom),
         "03d":LinearGradient(gradient: Gradient(colors: [Color( #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)), Color( #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1))]), startPoint: .top, endPoint: .bottom),

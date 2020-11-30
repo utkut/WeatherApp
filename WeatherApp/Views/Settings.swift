@@ -13,11 +13,11 @@ import SwiftUI
 struct Settings: View {
     
     @State var city : String = ""
-    @State var selected : Int = 0
+    @State var selected : Int = -1
     var body: some View {
         
         NavigationView {
-            VStack(alignment: .center, spacing: 35){
+            VStack(alignment: .center, spacing: 5){
                 
                 VStack(alignment:.center, spacing: 5){
                     

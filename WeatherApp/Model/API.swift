@@ -9,9 +9,9 @@
 //  Does not infringe any conflict of interest with Apple Business Conduct 2020.
 //
 import Foundation
-
 //MARK:- Networking Class
 class API {
+    
     
     
     // `endpoints` for  rest api
@@ -21,7 +21,8 @@ class API {
         static let locationBase = "http://api.openweathermap.org/data/2.5/"
         
         //MARK:- Get your appid here https://openweathermap.org/api
-        static let appid = "APPIDHERE"
+        static let appid = Secrets.appid
+        
         
         case metric(city:String)
         case imperial(city:String)
