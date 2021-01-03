@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  SwiftUIDemo
+//  WeatherApp
 //
 //  Created by Utku Tarhan on 6/25/20.
 //  Copyright © 2020 Utku Tarhan. All rights reserved.

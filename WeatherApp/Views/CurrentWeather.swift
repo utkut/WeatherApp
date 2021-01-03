@@ -43,21 +43,28 @@ struct CurrentWeather: View {
         "09n":LinearGradient(gradient: Gradient(colors: [Color( #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)), Color( #colorLiteral(red: 0.1596036421, green: 0, blue: 0.5802268401, alpha: 1))]), startPoint: .top, endPoint: .bottom),
         "defaultStatus":LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)),Color(#colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1))]), startPoint: .top, endPoint: .bottom)
     ]
+    @State private var city : String = ""
+    @ObservedObject var locationManager = LocationManager()
+    @ObservedObject var Weather = CurrentWeatherViewModel()
     
+    var userLatitude: String {
+            return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
+    }
+    var userLongitude: String {
+        return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+        }
     var weather : Weather?
     var height : CGFloat = 0
     var model: CurrentWeatherViewModel?
+    
     var body: some View {
         NavigationView{
-        
-            
-        VStack(alignment: .center, spacing: 10) {
-            
+            VStack(alignment: .center, spacing: 10) {
             Image(weather?.weather.last?.icon ?? "01d")
                 .resizable()
                 .frame(width: 130, height: 130)
                 .aspectRatio(contentMode: .fit)
-            Text("Today in \(weather?.name ?? "Unknown")")
+                Text("Today in \(weather?.name ?? "Unknown")")
                 .font(.title)
                 .foregroundColor(.white)
             .bold()
@@ -75,9 +82,31 @@ struct CurrentWeather: View {
             
         }.frame(width: height, height: height)
         .background(bgColors[weather?.weather.last?.icon ?? "defaultStatus"])
-        .navigationBarItems(trailing: NavigationLink(destination: Settings()) {
-                                Image(systemName: "gear").imageScale(.large)                            })
-        }.onAppear {} // Code Execution at startup
+            .navigationBarItems(leading: HStack{
+                                
+                                NavigationLink(destination: Settings()) {
+                                Image(systemName: "gear").imageScale(.large)}
+                
+                TextField("Enter your city", text: $city, onCommit: {
+
+
+                    self.Weather.fetchmetric(self.city)
+                               }) .padding()
+            })
+            
+    }.onAppear{
+        print(Settings().selected)
+        if Settings().selected == 0 {
+        print(Secrets.eula)
+             self.Weather.fetchmetriclocationdata(lat: userLatitude, lon: userLongitude)
+        print(userLatitude + ", " + userLongitude)
+        }
+        if Settings().selected == 1 {
+        print(Secrets.eula)
+            self.Weather.fetchmetriclocationdata(lat: userLatitude, lon: userLongitude)
+        print(userLatitude + ", " + userLongitude)
+        }
+    }
         
     }
 }
@@ -108,3 +137,6 @@ extension Double {
         return Int(self)
     }
 }
+
+
+
