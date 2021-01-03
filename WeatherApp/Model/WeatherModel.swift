@@ -17,7 +17,7 @@ final class CurrentWeatherViewModel : ObservableObject {
     
     init() {
         DispatchQueue.main.async {
-            if Settings().selected == 0 && LocationManager().statusString == "denied"{
+            if Settings().selected == 0{
                 self.fetchmetric()
             }
             
@@ -41,7 +41,6 @@ extension CurrentWeatherViewModel {
     func fetchmetric(_ city : String = "") {
         let icon = current?.weather.last?.icon
         API.fetchCurrentmetricWeather(by: city) { weather in
-            // Work In Progress
             DispatchQueue.main.async {
                 self.current = weather
                 self.color = self.backgroundColor(code: icon ?? "aaa")

@@ -1,6 +1,6 @@
 //
 //  Settings.swift
-//  SwiftUIDemo
+//  WeatherApp
 //
 //  Created by Utku Tarhan on 8/12/20.
 //  Copyright © 2020 Utku Tarhan. All rights reserved.
@@ -13,7 +13,7 @@ import SwiftUI
 struct Settings: View {
     
     @State var city : String = ""
-    @State var selected : Int = -1
+    @State var selected : Int = 0
     var body: some View {
         
         NavigationView {
@@ -22,11 +22,14 @@ struct Settings: View {
                 VStack(alignment:.center, spacing: 5){
                     
                     
-                    Picker(selection: self.$selected, label: Text("Temperature Unit")) {
-                        Text("Celsius").tag(1)
-                        Text("Fahrenheit").tag(2).padding()
+                    Picker(selection: $selected, label: Text("Temperature Unit")) {
+                        Text("Celsius").tag(0)
+                        Text("Fahrenheit").tag(1)
                             .pickerStyle(SegmentedPickerStyle())
-                    }
+                        }
+                            
+                            .padding()
+                    
                     
                 }
             }

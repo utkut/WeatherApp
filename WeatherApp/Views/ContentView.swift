@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  SwiftUIDemo
+//  WeatherApp
 //
 //  Created by Utku Tarhan on 6/25/20.
 //  Copyright © 2020 Utku Tarhan. All rights reserved.
@@ -14,14 +14,7 @@ import CoreLocation
 struct ContentView: View {
     @State private var selected = 1
     @ObservedObject var weather = CurrentWeatherViewModel()
-    @ObservedObject var locationManager = LocationManager()
-    @State var city : String = ""
-    var userLatitude: String {
-            return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
-    }
-    var userLongitude: String {
-        return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
-        }
+   
     
     private var height : CGFloat = UIScreen.main.bounds.height
         var body: some View {
@@ -31,9 +24,6 @@ struct ContentView: View {
                 
                 HStack(alignment: .top, spacing: 10){
                         VStack(alignment: .center, spacing: 0){
-                            TextField("Enter your city", text: $city, onCommit: {
-                                self.weather.fetchmetric(self.city)
-                            }) .padding()
                             
                             
                             GeometryReader{ gr in
@@ -51,12 +41,7 @@ struct ContentView: View {
 
             }
             
-            .onAppear{
-                print(Secrets.eula)
-                self.weather.fetchmetriclocationdata(lat: userLatitude, lon: userLongitude)
-                print(userLatitude + ", " + userLongitude)
-                
-            }
+ 
             
         }
     

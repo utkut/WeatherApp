@@ -21,7 +21,7 @@ class API {
         static let locationBase = "http://api.openweathermap.org/data/2.5/"
         
         //MARK:- Get your appid here https://openweathermap.org/api
-        static let appid = Secrets.appid
+        static let appid = Secrets.appid //Imports the secrets. Increases the API security.
         
         
         case metric(city:String)

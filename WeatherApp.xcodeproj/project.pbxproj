@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		6502EE8124A5C6AB004F78A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502EE8024A5C6AB004F78A9 /* AppDelegate.swift */; };
 		6502EE8324A5C6AC004F78A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502EE8224A5C6AB004F78A9 /* SceneDelegate.swift */; };
-		6502EE8824A5C6AC004F78A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502EE8724A5C6AC004F78A9 /* ContentView.swift */; };
 		6502EE8A24A5C6AE004F78A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6502EE8924A5C6AE004F78A9 /* Assets.xcassets */; };
 		6502EE8D24A5C6AF004F78A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6502EE8C24A5C6AF004F78A9 /* Preview Assets.xcassets */; };
 		6502EE9024A5C6AF004F78A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6502EE8E24A5C6AF004F78A9 /* LaunchScreen.storyboard */; };
 		650D33F12570EE39000FBF9D /* weatherEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D33F02570EE39000FBF9D /* weatherEntry.swift */; };
 		650D33F525747550000FBF9D /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D33F425747550000FBF9D /* Secrets.swift */; };
 		650D33FD25747851000FBF9D /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D33F425747550000FBF9D /* Secrets.swift */; };
+		650D34002574DA82000FBF9D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502EE8724A5C6AC004F78A9 /* ContentView.swift */; };
 		651B3D83256E52660052E4D9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651B3D82256E52660052E4D9 /* API.swift */; };
 		651B3D84256E52660052E4D9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651B3D82256E52660052E4D9 /* API.swift */; };
 		651F587824E3F049004B83E7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651F587724E3F049004B83E7 /* Settings.swift */; };
@@ -37,6 +37,7 @@
 		65BF754D24E4FEE3003012D4 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BF754C24E4FEE3003012D4 /* WeatherModel.swift */; };
 		65BF754F24E504F0003012D4 /* MapJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BF754E24E504EF003012D4 /* MapJSON.swift */; };
 		65BF755124E5192F003012D4 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BF755024E5192F003012D4 /* CurrentWeather.swift */; };
+		B87739F225A19114006DEB9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502EE8724A5C6AC004F78A9 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				65BF754624E4F1CF003012D4 /* Model */,
-				651F587924E3F6EB004B83E7 /* Views */,
 				6502EE8024A5C6AB004F78A9 /* AppDelegate.swift */,
+				651F587924E3F6EB004B83E7 /* Views */,
 				6502EE8224A5C6AB004F78A9 /* SceneDelegate.swift */,
 				6502EE8924A5C6AE004F78A9 /* Assets.xcassets */,
 				6502EE8E24A5C6AF004F78A9 /* LaunchScreen.storyboard */,
@@ -309,9 +310,9 @@
 			files = (
 				65BF754F24E504F0003012D4 /* MapJSON.swift in Sources */,
 				6502EE8124A5C6AB004F78A9 /* AppDelegate.swift in Sources */,
+				B87739F225A19114006DEB9E /* ContentView.swift in Sources */,
 				6562348024E90A2700D6CD5B /* LocationManager.swift in Sources */,
 				65947B5724ECE2DE005BE914 /* WeatherWidget.intentdefinition in Sources */,
-				6502EE8824A5C6AC004F78A9 /* ContentView.swift in Sources */,
 				6502EE8324A5C6AC004F78A9 /* SceneDelegate.swift in Sources */,
 				65BF755124E5192F003012D4 /* CurrentWeather.swift in Sources */,
 				65BF754D24E4FEE3003012D4 /* WeatherModel.swift in Sources */,
@@ -327,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65947B5124ECE2DA005BE914 /* WeatherWidget.swift in Sources */,
+				650D34002574DA82000FBF9D /* ContentView.swift in Sources */,
 				650D33FD25747851000FBF9D /* Secrets.swift in Sources */,
 				65947B5E24ECE585005BE914 /* CurrentWeather.swift in Sources */,
 				65947B6424ECEAF3005BE914 /* Settings.swift in Sources */,
